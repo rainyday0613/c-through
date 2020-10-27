@@ -1,37 +1,45 @@
 <template>
-  <form @submit.prevent="submit">
-    <div align="center">
-      <h1 id="getTitle">로그인</h1>
-      <table>
-        <tr>
-          <td>아이디</td>
-          <td><input type="text" v-model="id" class="block"></td>
-        </tr>
-        <tr>
-          <td>비밀번호</td>
-          <td><input type="password" v-model="pw" class="block"></td>
-        </tr>
-      </table>
-
-      <table>
-        <tr>
-          <td>
-            <button @click="login" class="block">로그인</button>
-          </td>
-          <td>
-            <button @click="$router.push('/')" class="block">취소</button>
-          </td>
-        </tr>
-      </table>
-      <table>
-        <tr>
-          <td><a @click="$router.push('/register')">회원가입</a></td>
-          <td><a @click="$router.push('/login/findid')">아이디 찾기</a></td>
-          <td><a @click="$router.push('/login/findpw')">비밀번호 찾기</a></td>
-        </tr>
-      </table>
+  <div id="login-page" class="row">
+    <div class="col s12 z-depth-6 card-panel">
+      <form class="login-form">
+        <div class="row">
+          <div class="input-field col s12 center">
+            <img src="https://previews.123rf.com/images/pimonova/pimonova1412/pimonova141200047/34661078-%EC%86%90-%EC%8A%A4%EC%BC%80%EC%B9%98-%EB%B9%88%ED%8B%B0%EC%A7%80-%EC%BB%A4%ED%94%BC-%EC%84%B8%ED%8A%B8%EB%A5%BC-%EA%B7%B8%EB%A0%A4-%EB%B2%A1%ED%84%B0-%EC%9D%BC%EB%9F%AC%EC%8A%A4%ED%8A%B8-%EB%A0%88%EC%9D%B4-%EC%85%98-%EC%B9%B4%ED%8E%98%EC%99%80-%EB%A0%88%EC%8A%A4%ED%86%A0%EB%9E%91-%EB%A9%94%EB%89%B4-%EB%94%94%EC%9E%90%EC%9D%B8.jpg" alt="" class="responsive-img valign profile-image-login">
+          </div>
+        </div>
+        <div class="row margin">
+          <div class="input-field col s12">
+            <i class="mdi-social-person-outline prefix"></i>
+            <input class="validate" v-model="id" id="email" type="email">
+            <label for="email" data-error="wrong" data-success="right" class="center-align">Email</label>
+          </div>
+        </div>
+        <div class="row margin">
+          <div class="input-field col s12">
+            <i class="mdi-action-lock-outline prefix"></i>
+            <input id="password" type="password" v-model="pw">
+            <label for="password">Password</label>
+          </div>
+        </div>
+        <div class="row">
+          <div class="input-field col s12">
+            <a href="login.html" class="btn waves-effect waves-light col s12">Login</a>
+          </div>
+        </div>
+        <div class="row">
+          <div class="input-field col s6 m6 l6">
+            <p class="medium-small"><a @click="$router.push('/register')">Sign Up Now!</a></p>
+          </div>
+          <div class="input-field col s6 m6 l6">
+            <p class="medium-small"><a @click="$router.push('/login/findid')">Forgot ID?</a></p>
+          </div>
+          <div class="input-field col s6 m6 l6">
+            <p class="medium-small"><a @click="$router.push('/login/findpw')">Forgot PW?</a></p>
+          </div>
+        </div>
+      </form>
     </div>
-  </form>
+  </div>
 </template>
 
 <script>
@@ -54,26 +62,31 @@ export default {
   }
 }
 </script>
-
 <style>
-#getTitle {
-  margin-top: 10%;
+#login-page {
+  width: 600px;
+  height: 700px;
+  margin-top: 30px;
+}
+img {
+  width: 150px;
+  height: 70px;
+  opacity: 70%;
+}
+.col s12 z-depth-6 card-panel {
+  border: 0px none;
+}
+a:hover {
+  background-color: lightgray;
+  transition: background-color 1s;
+}
+.medium-small {
+  display: flex;
+  justify-content: center;
 }
 
-table {
-  margin-top: 20px;
-}
-
-td {
-  padding: 5px;
-}
-
-button {
-  padding-right: 40px;
-  padding-left: 40px;
-}
-
-.block {
-  border: solid 1px black;
+.row {
+  display: flex;
+  justify-content: space-around;
 }
 </style>

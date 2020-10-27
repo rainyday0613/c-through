@@ -113,7 +113,7 @@ export default {
   data() {
     return {
       isOpen: true,
-      TF: true,
+      TF: false,
       items: [
         {
           label: "Menu",
