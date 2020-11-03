@@ -20,15 +20,15 @@ public class OrderbyRepository {
 
     public void create(Orderby orderby) throws Exception {
         log.info("Repository Orderby create");
-        String query = "insert into orderby(nickname, orders, cafenum, place) values(?, ?, ?, ?)";
-        jdbcTemplate.update(query, orderby.getNickname(), orderby.getOrders(), orderby.getCafenum(), orderby.getPlace());
+        String query = "insert into orderby(order_no,nickname, orders, cafenum, place) values(?, ?, ?, ?, ?)";
+        jdbcTemplate.update(query, orderby.getOrderNo(), orderby.getNickname(), orderby.getOrders(), orderby.getCafenum(), orderby.getPlace());
     }
 
     public List<Orderby> list(String place) throws Exception {
         log.info("Repository Orderby list()");
         log.info(place);
 
-        String query = "select order_no, nickname, orders, cafenum  from orderby where place = ?";
+        String query = "select nickname, orders, cafenum  from orderby where place = ?";
 
         List<Orderby> results = jdbcTemplate.query(
                 query,
@@ -37,7 +37,6 @@ public class OrderbyRepository {
                     public Orderby mapRow(ResultSet rs, int rowNum)
                             throws SQLException {
                         Orderby orderby = new Orderby();
-                        orderby.setOrderNo(rs.getLong("order_no"));
                         orderby.setNickname(rs.getString("nickname"));
                         orderby.setOrders(rs.getString("orders"));
                         orderby.setCafenum(rs.getInt("cafenum"));
