@@ -3,7 +3,6 @@
     <div id="map" class="map"></div>
   </div>
 </template>
-
 <script>
 import router from '../../routes'
 import axios from 'axios'
@@ -80,6 +79,7 @@ export default {
           image: markerImage,
           position: markerPositon
         });
+        const place2 = place.place_name
         marker.setMap(map);
         // 인포윈도우를 생성하고 지도에 표시합니다
         // let content = '<div sytle="font-size:12px;">hi</div>' +
@@ -124,15 +124,7 @@ export default {
                 router.push({name: 'Menu', params: {'place': place.place_name}});
               }
               btn2.onclick = function () {
-                console.log("a")
-                const a = place.place_name
-                axios.get('http://localhost:1234/opencv', {a})
-                    .then(res => {
-                      window.open('http://localhost:1234/opencv')
-                    })
-                    .catch(err => {
-                      alert(err.response.data)
-                    })
+                window.open('http://localhost:1234/opencv/'+place2)
               }
             });
       }
@@ -140,7 +132,6 @@ export default {
   }
 };
 </script>
-
 <style>
 .map {
   width: 100vw;
