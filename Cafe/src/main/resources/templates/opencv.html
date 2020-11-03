@@ -36,6 +36,7 @@
     let geometry;
     let material;
     let long = 1;
+
     //  한변의 길이
     const radius = 0.2;
     //  segments 각형( 최소 3각형)
@@ -48,6 +49,7 @@
     const camera = new THREE.PerspectiveCamera(fov, aspect, near, far);
     //  카메라 위치 설정하기
     camera.position.z = 1
+
     //  좌표계 설정
     const scene = new THREE.Scene();
     //  배경색 설정
@@ -123,6 +125,7 @@
         margin: 0;
         display: flex;
     }
+
     #numberz {
         margin-left: 80%;
         margin-top: 30px;
