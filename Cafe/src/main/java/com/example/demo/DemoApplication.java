@@ -8,15 +8,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class DemoApplication {
 
 	public static void main(String[] args) {
-<<<<<<< HEAD
-<<<<<<< HEAD
-//		ArrayReturnTest arrayReturnTest = new ArrayReturnTest();
-=======
-		//	ArrayReturnTest arrayReturnTest = new ArrayReturnTest();
->>>>>>> upstream/master
-=======
 		ArrayReturnTest arrayReturnTest = new ArrayReturnTest();
->>>>>>> upstream/master
 		SpringApplication.run(DemoApplication.class, args);
 	}
 

@@ -51,7 +51,7 @@
     setInterval(recy,1000)
     //  점 찍기
     function recy () {
-        axios.get('http://localhost:1234/lidartest').then(res => {
+        axios.get('http://localhost:7777/getlidar').then(res => {
             rs_angle = res.data.key_angle
             rs_dist = res.data.key_dist
             console.log(rs_dist)

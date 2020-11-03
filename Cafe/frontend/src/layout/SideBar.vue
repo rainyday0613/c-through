@@ -22,7 +22,7 @@
     </div>
     <div v-else id="loginTF" class="loginTF">
       <router-link to="/login">
-        <i class="fas fa-sign-in-alt">&nbsp; Sign In</i>
+        <span><i class="fas fa-sign-in-alt" style="color: white">&nbsp; Sign In</i></span>
       </router-link>
     </div>
     <div class="vps-sidebar-search">
@@ -30,7 +30,7 @@
     </div>
     <ul class="vps-sidebar-menu">
       <li class="vps-sidebar-menu-header">
-        <h4>C-through</h4>
+        <i class="fas fa-coffee"></i>
       </li>
       <li
           v-for="(item,index) in items"
@@ -49,7 +49,7 @@
               width="16px"
           />
           <div class="vps-sidebar-menu-item-content-label">
-            <router-link to="/Menu">
+            <router-link to="/Menu" style="color: white">
               {{ item.label }}
             </router-link>
           </div>

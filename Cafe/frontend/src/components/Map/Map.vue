@@ -6,12 +6,18 @@
 <script>
 import router from '../../routes'
 import axios from 'axios'
+import vuetify_css from 'vuetify/dist/vuetify.min.css';
+import EventBus from "@/utils/EventBus";
+
 export default {
   name: 'Map',
   mounted() {
     window.kakao && window.kakao.maps
         ? this.addKakaoMapScript()
         : this.initMap();
+    EventBus.$on("toggle-sidebar", isOpen => {
+      this.isOpen = isOpen;
+    });
   },
   methods: {
     addKakaoMapScript() {
@@ -96,17 +102,17 @@ export default {
             '    <ul>' +
             '        <a id = "showPeople">' +
             '           <li>' +
-            '            <span class="title">혼잡도</span>' +
+            '            <span>혼잡도</span>' +
             '           </li>' +
             '        </a>' +
             '        <a id = "txt2">' +
             '           <li>' +
-            '               <span class="title">즐겨찾기</span>' +
+            '               <span>즐겨찾기</span>' +
             '           </li>' +
             '        </a>' +
             '        <a id = "showMenu">' +
             '           <li>' +
-            '               <span class="title">주문</span>' +
+            '               <span>주문</span>' +
             '           </li>' +
             '        </a>' +
             '    </ul>' +
@@ -120,14 +126,27 @@ export default {
               infowindow.open(map, marker)
               let btn1 = document.getElementById("showMenu");
               let btn2 = document.getElementById("showPeople");
+              let sideBar = document.getElementById("vps-sidebar")
               btn1.onclick = function () {
                 router.push({name: 'Menu', params: {'place': place.place_name}});
               }
+              btn1.addEventListener('click', () => {
+                sideBar.classList.toggle('active')
+              })
               btn2.onclick = function () {
-                window.open('http://localhost:1234/opencv/'+place2)
+                window.open('http://localhost:1234/opencv/' + place2)
               }
             });
       }
+    },
+    toggle() {
+      this.$emit("toggle");
+    }
+  },
+  props: {
+    open: {
+      type: Boolean,
+      default: true
     }
   }
 };
@@ -172,6 +191,7 @@ export default {
 }
 .overlaybox ul {
   width: 247px;
+  padding: 0px;
 }
 .overlaybox li {
   position: relative;
